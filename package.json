@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typegen": "sanity schema extract --path ./src/sanity/schema.json && sanity typegen generate",
+    "typegen:watch": "sanity schema extract --watch"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
