@@ -418,3 +418,569 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
+
+// Source: src/sanity/queries/discipline.ts
+// Variable: allDisciplinesQuery
+// Query: *[_type == "discipline" && isActive == true]  | order(order asc, name asc) {    _id,    name,    "slug": slug.current,    description,    icon,    order  }
+export type AllDisciplinesQueryResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: string | null;
+  description: string | null;
+  icon: string | null;
+  order: number | null;
+}>;
+
+// Source: src/sanity/queries/discipline.ts
+// Variable: disciplineBySlugQuery
+// Query: *[    _type == "discipline" &&    isActive == true &&    slug.current == $slug  ][0] {    _id,    name,    "slug": slug.current,    description,    icon,    order  }
+export type DisciplineBySlugQueryResult = {
+  _id: string;
+  name: string | null;
+  slug: string | null;
+  description: string | null;
+  icon: string | null;
+  order: number | null;
+} | null;
+
+// Source: src/sanity/queries/discipline.ts
+// Variable: specializationsByDisciplineQuery
+// Query: *[    _type == "specialization" &&    isActive == true &&    discipline->slug.current == $disciplineSlug  ]  | order(order asc, name asc) {    _id,    name,    "slug": slug.current,    description,    order,    "discipline": discipline->{      _id,      name,      "slug": slug.current    }  }
+export type SpecializationsByDisciplineQueryResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: string | null;
+  description: string | null;
+  order: number | null;
+  discipline: {
+    _id: string;
+    name: string | null;
+    slug: string | null;
+  } | null;
+}>;
+
+// Source: src/sanity/queries/experience.ts
+// Variable: allExperienceQuery
+// Query: *[_type == "experience" && isActive == true]  | order(isCurrent desc, startDate desc, order asc) {    _id,    jobTitle,    organization,    employmentType,    workArrangement,    location,    startDate,    endDate,    isCurrent,    description,    responsibilities,    achievements,    "technologies": technologies[]->{      _id,      name,      category,      icon    },    "skills": skills[]->{      _id,      name,      category    },    organizationLogo,    order  }
+export type AllExperienceQueryResult = Array<{
+  _id: string;
+  jobTitle: string | null;
+  organization: string | null;
+  employmentType:
+    | "contract"
+    | "freelance"
+    | "fullTime"
+    | "internship"
+    | "other"
+    | "partTime"
+    | "volunteer"
+    | null;
+  workArrangement: "hybrid" | "onsite" | "remote" | null;
+  location: string | null;
+  startDate: string | null;
+  endDate: string | null;
+  isCurrent: boolean | null;
+  description: string | null;
+  responsibilities: Array<string> | null;
+  achievements: Array<string> | null;
+  technologies: Array<{
+    _id: string;
+    name: string | null;
+    category:
+      | "database"
+      | "framework"
+      | "language"
+      | "library"
+      | "other"
+      | "platform"
+      | "service"
+      | "tool"
+      | null;
+    icon: string | null;
+  }> | null;
+  skills: Array<{
+    _id: string;
+    name: string | null;
+    category:
+      "analytical" | "interpersonal" | "professional" | "technical" | null;
+  }> | null;
+  organizationLogo: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  order: number | null;
+}>;
+
+// Source: src/sanity/queries/project.ts
+// Variable: allProjectsQuery
+// Query: *[_type == "project" && defined(slug.current)]  | order(featured desc, order asc, title asc) {      _id,  title,  "slug": slug.current,  description,  status,  projectType,  featured,  order,  startDate,  completionDate,  "disciplines": disciplines[]->{    _id,    name,    "slug": slug.current,    icon  },  "specializations": specializations[]->{    _id,    name,    "slug": slug.current  },  "technologies": technologies[]->{    _id,    name,    category,    icon  },  coverImage,  coverImageAlt,  links[]{    label,    url,    type  }  }
+export type AllProjectsQueryResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: string | null;
+  description: string | null;
+  status: "completed" | "inProgress" | "planned" | null;
+  projectType:
+    | "academic"
+    | "client"
+    | "experimental"
+    | "freelance"
+    | "openSource"
+    | "other"
+    | "personal"
+    | null;
+  featured: boolean | null;
+  order: number | null;
+  startDate: string | null;
+  completionDate: string | null;
+  disciplines: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+    icon: string | null;
+  }> | null;
+  specializations: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+  }> | null;
+  technologies: Array<{
+    _id: string;
+    name: string | null;
+    category:
+      | "database"
+      | "framework"
+      | "language"
+      | "library"
+      | "other"
+      | "platform"
+      | "service"
+      | "tool"
+      | null;
+    icon: string | null;
+  }> | null;
+  coverImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  coverImageAlt: string | null;
+  links: Array<{
+    label: string | null;
+    url: string | null;
+    type:
+      | "api"
+      | "dataset"
+      | "documentation"
+      | "liveDemo"
+      | "model"
+      | "notebook"
+      | "other"
+      | "prototype"
+      | "report"
+      | "repository"
+      | "website"
+      | null;
+  }> | null;
+}>;
+
+// Source: src/sanity/queries/project.ts
+// Variable: featuredProjectsQuery
+// Query: *[_type == "project" && featured == true && defined(slug.current)]  | order(order asc, title asc) {      _id,  title,  "slug": slug.current,  description,  status,  projectType,  featured,  order,  startDate,  completionDate,  "disciplines": disciplines[]->{    _id,    name,    "slug": slug.current,    icon  },  "specializations": specializations[]->{    _id,    name,    "slug": slug.current  },  "technologies": technologies[]->{    _id,    name,    category,    icon  },  coverImage,  coverImageAlt,  links[]{    label,    url,    type  }  }
+export type FeaturedProjectsQueryResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: string | null;
+  description: string | null;
+  status: "completed" | "inProgress" | "planned" | null;
+  projectType:
+    | "academic"
+    | "client"
+    | "experimental"
+    | "freelance"
+    | "openSource"
+    | "other"
+    | "personal"
+    | null;
+  featured: boolean | null;
+  order: number | null;
+  startDate: string | null;
+  completionDate: string | null;
+  disciplines: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+    icon: string | null;
+  }> | null;
+  specializations: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+  }> | null;
+  technologies: Array<{
+    _id: string;
+    name: string | null;
+    category:
+      | "database"
+      | "framework"
+      | "language"
+      | "library"
+      | "other"
+      | "platform"
+      | "service"
+      | "tool"
+      | null;
+    icon: string | null;
+  }> | null;
+  coverImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  coverImageAlt: string | null;
+  links: Array<{
+    label: string | null;
+    url: string | null;
+    type:
+      | "api"
+      | "dataset"
+      | "documentation"
+      | "liveDemo"
+      | "model"
+      | "notebook"
+      | "other"
+      | "prototype"
+      | "report"
+      | "repository"
+      | "website"
+      | null;
+  }> | null;
+}>;
+
+// Source: src/sanity/queries/project.ts
+// Variable: projectsByDisciplineQuery
+// Query: *[    _type == "project" &&    defined(slug.current) &&    references(*[      _type == "discipline" &&      slug.current == $disciplineSlug    ]._id)  ]  | order(featured desc, order asc, title asc) {      _id,  title,  "slug": slug.current,  description,  status,  projectType,  featured,  order,  startDate,  completionDate,  "disciplines": disciplines[]->{    _id,    name,    "slug": slug.current,    icon  },  "specializations": specializations[]->{    _id,    name,    "slug": slug.current  },  "technologies": technologies[]->{    _id,    name,    category,    icon  },  coverImage,  coverImageAlt,  links[]{    label,    url,    type  }  }
+export type ProjectsByDisciplineQueryResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: string | null;
+  description: string | null;
+  status: "completed" | "inProgress" | "planned" | null;
+  projectType:
+    | "academic"
+    | "client"
+    | "experimental"
+    | "freelance"
+    | "openSource"
+    | "other"
+    | "personal"
+    | null;
+  featured: boolean | null;
+  order: number | null;
+  startDate: string | null;
+  completionDate: string | null;
+  disciplines: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+    icon: string | null;
+  }> | null;
+  specializations: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+  }> | null;
+  technologies: Array<{
+    _id: string;
+    name: string | null;
+    category:
+      | "database"
+      | "framework"
+      | "language"
+      | "library"
+      | "other"
+      | "platform"
+      | "service"
+      | "tool"
+      | null;
+    icon: string | null;
+  }> | null;
+  coverImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  coverImageAlt: string | null;
+  links: Array<{
+    label: string | null;
+    url: string | null;
+    type:
+      | "api"
+      | "dataset"
+      | "documentation"
+      | "liveDemo"
+      | "model"
+      | "notebook"
+      | "other"
+      | "prototype"
+      | "report"
+      | "repository"
+      | "website"
+      | null;
+  }> | null;
+}>;
+
+// Source: src/sanity/queries/project.ts
+// Variable: projectsBySpecializationQuery
+// Query: *[    _type == "project" &&    defined(slug.current) &&    references(*[      _type == "specialization" &&      slug.current == $specializationSlug    ]._id)  ]  | order(featured desc, order asc, title asc) {      _id,  title,  "slug": slug.current,  description,  status,  projectType,  featured,  order,  startDate,  completionDate,  "disciplines": disciplines[]->{    _id,    name,    "slug": slug.current,    icon  },  "specializations": specializations[]->{    _id,    name,    "slug": slug.current  },  "technologies": technologies[]->{    _id,    name,    category,    icon  },  coverImage,  coverImageAlt,  links[]{    label,    url,    type  }  }
+export type ProjectsBySpecializationQueryResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: string | null;
+  description: string | null;
+  status: "completed" | "inProgress" | "planned" | null;
+  projectType:
+    | "academic"
+    | "client"
+    | "experimental"
+    | "freelance"
+    | "openSource"
+    | "other"
+    | "personal"
+    | null;
+  featured: boolean | null;
+  order: number | null;
+  startDate: string | null;
+  completionDate: string | null;
+  disciplines: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+    icon: string | null;
+  }> | null;
+  specializations: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+  }> | null;
+  technologies: Array<{
+    _id: string;
+    name: string | null;
+    category:
+      | "database"
+      | "framework"
+      | "language"
+      | "library"
+      | "other"
+      | "platform"
+      | "service"
+      | "tool"
+      | null;
+    icon: string | null;
+  }> | null;
+  coverImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  coverImageAlt: string | null;
+  links: Array<{
+    label: string | null;
+    url: string | null;
+    type:
+      | "api"
+      | "dataset"
+      | "documentation"
+      | "liveDemo"
+      | "model"
+      | "notebook"
+      | "other"
+      | "prototype"
+      | "report"
+      | "repository"
+      | "website"
+      | null;
+  }> | null;
+}>;
+
+// Source: src/sanity/queries/project.ts
+// Variable: projectBySlugQuery
+// Query: *[    _type == "project" &&    slug.current == $slug  ][0] {      _id,  title,  "slug": slug.current,  description,  status,  projectType,  featured,  order,  startDate,  completionDate,  "disciplines": disciplines[]->{    _id,    name,    "slug": slug.current,    icon  },  "specializations": specializations[]->{    _id,    name,    "slug": slug.current  },  "technologies": technologies[]->{    _id,    name,    category,    icon  },  coverImage,  coverImageAlt,  links[]{    label,    url,    type  },    markdownUrl,    gallery[]{      image,      alt,      caption    },    achievements,    results,    "relatedProjects": relatedProjects[]->{      _id,      title,      "slug": slug.current,      description,      coverImage,      coverImageAlt    }  }
+export type ProjectBySlugQueryResult = {
+  _id: string;
+  title: string | null;
+  slug: string | null;
+  description: string | null;
+  status: "completed" | "inProgress" | "planned" | null;
+  projectType:
+    | "academic"
+    | "client"
+    | "experimental"
+    | "freelance"
+    | "openSource"
+    | "other"
+    | "personal"
+    | null;
+  featured: boolean | null;
+  order: number | null;
+  startDate: string | null;
+  completionDate: string | null;
+  disciplines: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+    icon: string | null;
+  }> | null;
+  specializations: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+  }> | null;
+  technologies: Array<{
+    _id: string;
+    name: string | null;
+    category:
+      | "database"
+      | "framework"
+      | "language"
+      | "library"
+      | "other"
+      | "platform"
+      | "service"
+      | "tool"
+      | null;
+    icon: string | null;
+  }> | null;
+  coverImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  coverImageAlt: string | null;
+  links: Array<{
+    label: string | null;
+    url: string | null;
+    type:
+      | "api"
+      | "dataset"
+      | "documentation"
+      | "liveDemo"
+      | "model"
+      | "notebook"
+      | "other"
+      | "prototype"
+      | "report"
+      | "repository"
+      | "website"
+      | null;
+  }> | null;
+  markdownUrl: string | null;
+  gallery: Array<{
+    image: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+    alt: string | null;
+    caption: string | null;
+  }> | null;
+  achievements: Array<string> | null;
+  results: Array<string> | null;
+  relatedProjects: Array<{
+    _id: string;
+    title: string | null;
+    slug: string | null;
+    description: string | null;
+    coverImage: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+    coverImageAlt: string | null;
+  }> | null;
+} | null;
+
+// Source: src/sanity/queries/skill.ts
+// Variable: allSkillsQuery
+// Query: *[_type == "skill" && isActive == true]  | order(category asc, order asc, name asc) {    _id,    name,    "slug": slug.current,    category,    description,    "relatedTechnologies": relatedTechnologies[]->{      _id,      name,      category,      icon,      website    },    order  }
+export type AllSkillsQueryResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: string | null;
+  category:
+    "analytical" | "interpersonal" | "professional" | "technical" | null;
+  description: string | null;
+  relatedTechnologies: Array<{
+    _id: string;
+    name: string | null;
+    category:
+      | "database"
+      | "framework"
+      | "language"
+      | "library"
+      | "other"
+      | "platform"
+      | "service"
+      | "tool"
+      | null;
+    icon: string | null;
+    website: string | null;
+  }> | null;
+  order: number | null;
+}>;
+
+// Source: src/sanity/queries/technology.ts
+// Variable: allTechnologiesQuery
+// Query: *[_type == "technology" && isActive == true]  | order(category asc, name asc) {    _id,    name,    "slug": slug.current,    category,    icon,    website  }
+export type AllTechnologiesQueryResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: string | null;
+  category:
+    | "database"
+    | "framework"
+    | "language"
+    | "library"
+    | "other"
+    | "platform"
+    | "service"
+    | "tool"
+    | null;
+  icon: string | null;
+  website: string | null;
+}>;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    '\n  *[_type == "discipline" && isActive == true]\n  | order(order asc, name asc) {\n    _id,\n    name,\n    "slug": slug.current,\n    description,\n    icon,\n    order\n  }\n': AllDisciplinesQueryResult;
+    '\n  *[\n    _type == "discipline" &&\n    isActive == true &&\n    slug.current == $slug\n  ][0] {\n    _id,\n    name,\n    "slug": slug.current,\n    description,\n    icon,\n    order\n  }\n': DisciplineBySlugQueryResult;
+    '\n  *[\n    _type == "specialization" &&\n    isActive == true &&\n    discipline->slug.current == $disciplineSlug\n  ]\n  | order(order asc, name asc) {\n    _id,\n    name,\n    "slug": slug.current,\n    description,\n    order,\n    "discipline": discipline->{\n      _id,\n      name,\n      "slug": slug.current\n    }\n  }\n': SpecializationsByDisciplineQueryResult;
+    '\n  *[_type == "experience" && isActive == true]\n  | order(isCurrent desc, startDate desc, order asc) {\n    _id,\n    jobTitle,\n    organization,\n    employmentType,\n    workArrangement,\n    location,\n    startDate,\n    endDate,\n    isCurrent,\n    description,\n    responsibilities,\n    achievements,\n    "technologies": technologies[]->{\n      _id,\n      name,\n      category,\n      icon\n    },\n    "skills": skills[]->{\n      _id,\n      name,\n      category\n    },\n    organizationLogo,\n    order\n  }\n': AllExperienceQueryResult;
+    '\n  *[_type == "project" && defined(slug.current)]\n  | order(featured desc, order asc, title asc) {\n    \n  _id,\n  title,\n  "slug": slug.current,\n  description,\n  status,\n  projectType,\n  featured,\n  order,\n  startDate,\n  completionDate,\n  "disciplines": disciplines[]->{\n    _id,\n    name,\n    "slug": slug.current,\n    icon\n  },\n  "specializations": specializations[]->{\n    _id,\n    name,\n    "slug": slug.current\n  },\n  "technologies": technologies[]->{\n    _id,\n    name,\n    category,\n    icon\n  },\n  coverImage,\n  coverImageAlt,\n  links[]{\n    label,\n    url,\n    type\n  }\n\n  }\n': AllProjectsQueryResult;
+    '\n  *[_type == "project" && featured == true && defined(slug.current)]\n  | order(order asc, title asc) {\n    \n  _id,\n  title,\n  "slug": slug.current,\n  description,\n  status,\n  projectType,\n  featured,\n  order,\n  startDate,\n  completionDate,\n  "disciplines": disciplines[]->{\n    _id,\n    name,\n    "slug": slug.current,\n    icon\n  },\n  "specializations": specializations[]->{\n    _id,\n    name,\n    "slug": slug.current\n  },\n  "technologies": technologies[]->{\n    _id,\n    name,\n    category,\n    icon\n  },\n  coverImage,\n  coverImageAlt,\n  links[]{\n    label,\n    url,\n    type\n  }\n\n  }\n': FeaturedProjectsQueryResult;
+    '\n  *[\n    _type == "project" &&\n    defined(slug.current) &&\n    references(*[\n      _type == "discipline" &&\n      slug.current == $disciplineSlug\n    ]._id)\n  ]\n  | order(featured desc, order asc, title asc) {\n    \n  _id,\n  title,\n  "slug": slug.current,\n  description,\n  status,\n  projectType,\n  featured,\n  order,\n  startDate,\n  completionDate,\n  "disciplines": disciplines[]->{\n    _id,\n    name,\n    "slug": slug.current,\n    icon\n  },\n  "specializations": specializations[]->{\n    _id,\n    name,\n    "slug": slug.current\n  },\n  "technologies": technologies[]->{\n    _id,\n    name,\n    category,\n    icon\n  },\n  coverImage,\n  coverImageAlt,\n  links[]{\n    label,\n    url,\n    type\n  }\n\n  }\n': ProjectsByDisciplineQueryResult;
+    '\n  *[\n    _type == "project" &&\n    defined(slug.current) &&\n    references(*[\n      _type == "specialization" &&\n      slug.current == $specializationSlug\n    ]._id)\n  ]\n  | order(featured desc, order asc, title asc) {\n    \n  _id,\n  title,\n  "slug": slug.current,\n  description,\n  status,\n  projectType,\n  featured,\n  order,\n  startDate,\n  completionDate,\n  "disciplines": disciplines[]->{\n    _id,\n    name,\n    "slug": slug.current,\n    icon\n  },\n  "specializations": specializations[]->{\n    _id,\n    name,\n    "slug": slug.current\n  },\n  "technologies": technologies[]->{\n    _id,\n    name,\n    category,\n    icon\n  },\n  coverImage,\n  coverImageAlt,\n  links[]{\n    label,\n    url,\n    type\n  }\n\n  }\n': ProjectsBySpecializationQueryResult;
+    '\n  *[\n    _type == "project" &&\n    slug.current == $slug\n  ][0] {\n    \n  _id,\n  title,\n  "slug": slug.current,\n  description,\n  status,\n  projectType,\n  featured,\n  order,\n  startDate,\n  completionDate,\n  "disciplines": disciplines[]->{\n    _id,\n    name,\n    "slug": slug.current,\n    icon\n  },\n  "specializations": specializations[]->{\n    _id,\n    name,\n    "slug": slug.current\n  },\n  "technologies": technologies[]->{\n    _id,\n    name,\n    category,\n    icon\n  },\n  coverImage,\n  coverImageAlt,\n  links[]{\n    label,\n    url,\n    type\n  }\n,\n    markdownUrl,\n    gallery[]{\n      image,\n      alt,\n      caption\n    },\n    achievements,\n    results,\n    "relatedProjects": relatedProjects[]->{\n      _id,\n      title,\n      "slug": slug.current,\n      description,\n      coverImage,\n      coverImageAlt\n    }\n  }\n': ProjectBySlugQueryResult;
+    '\n  *[_type == "skill" && isActive == true]\n  | order(category asc, order asc, name asc) {\n    _id,\n    name,\n    "slug": slug.current,\n    category,\n    description,\n    "relatedTechnologies": relatedTechnologies[]->{\n      _id,\n      name,\n      category,\n      icon,\n      website\n    },\n    order\n  }\n': AllSkillsQueryResult;
+    '\n  *[_type == "technology" && isActive == true]\n  | order(category asc, name asc) {\n    _id,\n    name,\n    "slug": slug.current,\n    category,\n    icon,\n    website\n  }\n': AllTechnologiesQueryResult;
+  }
+}
