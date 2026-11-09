@@ -88,8 +88,9 @@ export const projectsBySpecializationQuery = defineQuery(`
 export const projectBySlugQuery = defineQuery(`
   *[
     _type == "project" &&
-    slug.current == $slug
-  ][0] {
+    slug.current == $slug &&
+    showDetailsPage == true
+  ][0]{
     ${projectFields},
     markdownUrl,
     gallery[]{
