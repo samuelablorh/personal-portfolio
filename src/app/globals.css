@@ -297,11 +297,11 @@
   --color-focus-border: var(--color-border-focus);
 
   /* Primary brand */
-  --color-brand: var(--color-brand-primary);
-  --color-brand-hover: var(--color-brand-primary-hover);
-  --color-brand-active: var(--color-brand-primary-active);
-  --color-brand-subtle: var(--color-brand-primary-subtle);
-  --color-brand-foreground: var(--color-brand-primary-foreground);
+  --color-primary-brand: var(--color-brand-primary);
+  --color-primary-brand-hover: var(--color-brand-primary-hover);
+  --color-primary-brand-active: var(--color-brand-primary-active);
+  --color-primary-brand-subtle: var(--color-brand-primary-subtle);
+  --color-primary-brand-foreground: var(--color-brand-primary-foreground);
 
   /* Secondary brand */
   --color-secondary-brand: var(--color-brand-secondary);
@@ -431,3 +431,15 @@
     color: var(--color-text-link-hover);
   }
 }
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+  color: var(--color-interactive-disabled-text);
+  background-color: var(--color-interactive-disabled);
+}
+
+
+

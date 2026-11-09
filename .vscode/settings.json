@@ -12,5 +12,6 @@
     "statusBar.debuggingForeground": "#FFF8F4",
     "statusBar.noFolderBackground": "#9B4207",
     "statusBar.noFolderForeground": "#FFF8F4"
-  }
+  },
+  "css.lint.unknownAtRules": "ignore"
 }
