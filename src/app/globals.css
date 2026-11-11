@@ -6,6 +6,7 @@
    ========================================= */
 
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
@@ -297,18 +298,18 @@
   --color-focus-border: var(--color-border-focus);
 
   /* Primary brand */
-  --color-primary-brand: var(--color-brand-primary);
-  --color-primary-brand-hover: var(--color-brand-primary-hover);
-  --color-primary-brand-active: var(--color-brand-primary-active);
-  --color-primary-brand-subtle: var(--color-brand-primary-subtle);
-  --color-primary-brand-foreground: var(--color-brand-primary-foreground);
+  --color-primary: var(--color-brand-primary);
+  --color-primary-hover: var(--color-brand-primary-hover);
+  --color-primary-active: var(--color-brand-primary-active);
+  --color-primary-subtle: var(--color-brand-primary-subtle);
+  --color-primary-foreground: var(--color-brand-primary-foreground);
 
   /* Secondary brand */
-  --color-secondary-brand: var(--color-brand-secondary);
-  --color-secondary-brand-hover: var(--color-brand-secondary-hover);
-  --color-secondary-brand-active: var(--color-brand-secondary-active);
-  --color-secondary-brand-subtle: var(--color-brand-secondary-subtle);
-  --color-secondary-brand-foreground: var(--color-brand-secondary-foreground);
+  --color-secondary: var(--color-brand-secondary);
+  --color-secondary-hover: var(--color-brand-secondary-hover);
+  --color-secondary-active: var(--color-brand-secondary-active);
+  --color-secondary-subtle: var(--color-brand-secondary-subtle);
+  --color-secondary-foreground: var(--color-brand-secondary-foreground);
 
   /* Interactive states */
   --color-state-hover: var(--color-interactive-hover);
@@ -340,7 +341,7 @@
   --color-selection-foreground: var(--color-selection-text);
 
   /* shadcn/ui semantic colors */
-  --color-background: var(--color-background-canvas);
+  /* --color-background: var(--color-background-canvas);
   --color-foreground: var(--color-text-primary);
 
   --color-card: var(--color-surface-default);
@@ -366,7 +367,7 @@
 
   --color-border: var(--color-border-default);
   --color-input: var(--color-border-default);
-  --color-ring: var(--color-focus-ring);
+  --color-ring: var(--color-focus-ring); */
 }
 
 

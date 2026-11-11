@@ -2,7 +2,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { fetchProjectMarkdown } from "@/sanity/lib/markdown";
 import { projectBySlugQuery } from "@/sanity/queries";
 
-import { MarkdownRenderer } from "@/components/projects/MarkdownRenderer";
+import { MarkdownContent } from "@/components/projects/MarkdownContent";
 
 export default async function TestIntegrationPage() {
   "use cache";
@@ -52,7 +52,7 @@ export default async function TestIntegrationPage() {
         <h2 className="text-2xl font-bold">GitHub Markdown</h2>
 
         {markdown ? (
-          <MarkdownRenderer content={markdown} />
+          <MarkdownContent content={markdown} />
         ) : (
           <p>No Markdown URL configured.</p>
         )}
