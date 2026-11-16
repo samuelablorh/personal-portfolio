@@ -341,7 +341,7 @@
   --color-selection-foreground: var(--color-selection-text);
 
   /* shadcn/ui semantic colors */
-  /* --color-background: var(--color-background-canvas);
+  --color-background: var(--color-background-canvas);
   --color-foreground: var(--color-text-primary);
 
   --color-card: var(--color-surface-default);
@@ -349,12 +349,6 @@
 
   --color-popover: var(--color-surface-raised);
   --color-popover-foreground: var(--color-text-primary);
-
-  --color-primary: var(--color-brand-primary);
-  --color-primary-foreground: var(--color-brand-primary-foreground);
-
-  --color-secondary: var(--color-surface-muted);
-  --color-secondary-foreground: var(--color-text-primary);
 
   --color-muted: var(--color-surface-muted);
   --color-muted-foreground: var(--color-text-muted);
@@ -367,7 +361,7 @@
 
   --color-border: var(--color-border-default);
   --color-input: var(--color-border-default);
-  --color-ring: var(--color-focus-ring); */
+  --color-ring: var(--color-focus-ring);
 }
 
 
