@@ -58,13 +58,13 @@ export const skill = defineType({
       },
       validation: (Rule) => Rule.unique(),
     }),
-    defineField({
-      name: "order",
-      title: "Display Order",
-      type: "number",
-      initialValue: 0,
-      validation: (Rule) => Rule.integer().min(0),
-    }),
+    // defineField({
+    //   name: "order",
+    //   title: "Display Order",
+    //   type: "number",
+    //   initialValue: 0,
+    //   validation: (Rule) => Rule.integer().min(0),
+    // }),
     defineField({
       name: "isActive",
       title: "Active",
@@ -79,11 +79,11 @@ export const skill = defineType({
     },
   },
   orderings: [
-    {
-      title: "Display Order",
-      name: "orderAsc",
-      by: [{ field: "order", direction: "asc" }],
-    },
+    // {
+    //   title: "Display Order",
+    //   name: "orderAsc",
+    //   by: [{ field: "order", direction: "asc" }],
+    // },
     {
       title: "Name",
       name: "nameAsc",

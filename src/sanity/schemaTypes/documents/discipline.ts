@@ -32,7 +32,7 @@ export const discipline = defineType({
       name: "icon",
       title: "Icon",
       type: "string",
-      description: "Optional icon identifier used by the frontend.",
+      description: "Enter an Iconify icon identifier, e.g. lucide:code",
     }),
     defineField({
       name: "order",

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { DynamicIcon } from "@/components/ui/dynamic-icon";
 
 export default function Home() {
   return (
@@ -7,6 +8,11 @@ export default function Home() {
       <h1 className="text-2xl font-semibold">Button Component Test</h1>
 
       <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex items-center gap-2">
+          <DynamicIcon name="lucide:code" className="" />
+          <DynamicIcon name="lucide:github" className="" />
+          <DynamicIcon name="simple-icons:nextdotjs" className="" />
+        </div>
         <Link href="/test-integration">
           <Button>Test Integration</Button>
         </Link>

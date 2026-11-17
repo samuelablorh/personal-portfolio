@@ -28,6 +28,7 @@ export const technology = defineType({
       options: {
         list: [
           { title: "Programming Language", value: "language" },
+          { title: "Markdown", value: "markdown" },
           { title: "Framework", value: "framework" },
           { title: "Library", value: "library" },
           { title: "Database", value: "database" },
@@ -44,7 +45,7 @@ export const technology = defineType({
       name: "icon",
       title: "Icon",
       type: "string",
-      description: "Optional icon identifier used by the frontend.",
+      description: "Enter an Iconify icon identifier, e.g. lucide:code",
     }),
     defineField({
       name: "website",

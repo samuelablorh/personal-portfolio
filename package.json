@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
+    "@iconify/react": "^6.0.4",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.31.2",
     "class-variance-authority": "^0.7.1",
