@@ -1,17 +1,29 @@
 {
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.colorCustomizations": {
-    "activityBar.background": "#9B4207",
-    "titleBar.activeBackground": "#D95D0A",
-    "titleBar.activeForeground": "#FFF8F4",
-    "titleBar.inactiveBackground": "#9B4207",
-    "titleBar.inactiveForeground": "#FFF8F4",
-    "statusBar.background": "#9B4207",
-    "statusBar.foreground": "#FFF8F4",
-    "statusBar.debuggingBackground": "#9B4207",
-    "statusBar.debuggingForeground": "#FFF8F4",
-    "statusBar.noFolderBackground": "#9B4207",
-    "statusBar.noFolderForeground": "#FFF8F4"
+    "activityBar.background": "#242438",
+    "activityBar.foreground": "#C6D0F5",
+    "activityBar.activeBorder": "#8B9CF6",
+
+    "titleBar.activeBackground": "#303047",
+    "titleBar.activeForeground": "#CDD6F4",
+    "titleBar.inactiveBackground": "#242438",
+    "titleBar.inactiveForeground": "#939AB3",
+
+    "statusBar.background": "#303047",
+    "statusBar.foreground": "#CDD6F4",
+    "statusBar.debuggingBackground": "#D65D7A",
+    "statusBar.debuggingForeground": "#FFFFFF",
+    "statusBar.noFolderBackground": "#242438",
+    "statusBar.noFolderForeground": "#939AB3",
+
+    "panelTitle.activeBorder": "#8B9CF6",
+    "tab.activeBorderTop": "#8B9CF6",
+    "focusBorder": "#8B9CF6",
+
+    "terminal.border": "#45475A",
+    "sideBar.border": "#313244",
+    "editorGroup.border": "#313244"
   },
   "css.lint.unknownAtRules": "ignore"
 }
