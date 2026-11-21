@@ -29,6 +29,11 @@ const projectFields = `
     category,
     icon
   },
+    "skills": skills[]->{
+    _id,
+    name,
+    category
+  },
   coverImage,
   coverImageAlt,
   links[]{

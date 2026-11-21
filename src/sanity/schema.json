@@ -1217,13 +1217,6 @@
         },
         "optional": true
       },
-      "order": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "number"
-        },
-        "optional": true
-      },
       "isActive": {
         "type": "objectAttribute",
         "value": {
@@ -1291,6 +1284,10 @@
             {
               "type": "string",
               "value": "language"
+            },
+            {
+              "type": "string",
+              "value": "markdown"
             },
             {
               "type": "string",
