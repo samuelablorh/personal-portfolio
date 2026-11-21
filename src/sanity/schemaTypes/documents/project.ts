@@ -328,17 +328,43 @@ export const project = defineType({
     }),
   ],
 
+  // preview: {
+  //   select: {
+  //     title: "title",
+  //     subtitle: "description",
+  //     media: "coverImage",
+  //     featured: "featured",
+  //   },
+  //   prepare({ title, subtitle, media, featured }) {
+  //     return {
+  //       title: featured ? `★ ${title}` : title,
+  //       subtitle,
+  //       media,
+  //     };
+  //   },
+  // },
+
   preview: {
     select: {
       title: "title",
       subtitle: "description",
       media: "coverImage",
       featured: "featured",
+      order: "order",
+      status: "status",
+      disciplines: "disciplines",
     },
-    prepare({ title, subtitle, media, featured }) {
+    prepare({ title, subtitle, media, featured, order, disciplines, status }) {
       return {
         title: featured ? `★ ${title}` : title,
-        subtitle,
+        subtitle: [
+          `🔢 ${order ?? "N/A"}`,
+          `📌 ${status ?? "N/A"}`,
+          `💻 Disci...: ${disciplines?.length ?? 0}`,
+          subtitle,
+        ]
+          .filter(Boolean)
+          .join(" | "),
         media,
       };
     },

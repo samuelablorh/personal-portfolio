@@ -176,15 +176,27 @@ export const experience = defineType({
       endDate: "endDate",
       isCurrent: "isCurrent",
       media: "organizationLogo",
+      order: "order",
     },
-    prepare({ title, organization, startDate, endDate, isCurrent, media }) {
+    prepare({
+      title,
+      organization,
+      startDate,
+      endDate,
+      isCurrent,
+      media,
+      order,
+    }) {
       const period = startDate
         ? `${startDate} – ${isCurrent ? "Present" : endDate || "No end date"}`
         : "";
+      const additionalTitle = `${order !== undefined ? ` (#${order})` : ""}`;
 
       return {
         title,
-        subtitle: [organization, period].filter(Boolean).join(" · "),
+        subtitle: [additionalTitle, organization, period]
+          .filter(Boolean)
+          .join(" · "),
         media,
       };
     },
